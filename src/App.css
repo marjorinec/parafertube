@@ -31,3 +31,30 @@
     transform: rotate(360deg);
   }
 }
+
+@media (min-width: 1200px){
+  .container {
+    max-width: 100% !important;
+  }
+}
+
+.resultados {
+  margin-top: 50px;
+}
+
+.search {
+  margin-top: 30px;
+  max-width: 400px;
+}
+
+.thumbnail {
+  float: left;
+}
+
+.video1 {
+  margin-top: 40px;
+}
+
+.video-description {
+  font-size: 11px
+}
