@@ -4,6 +4,21 @@ import { InputGroup, FormControl, Button, Row, Col, Container } from 'react-boot
 
 class App extends React.Component{
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      termosBusca: "",
+      resultados: [],
+      idVideoAtual: ""
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({termosBusca: event.target.value})
+  }
+
   render() {
     return (
       <Container className="App">
@@ -12,6 +27,8 @@ class App extends React.Component{
               <InputGroup className="search">
                 <FormControl
                   placeholder="Pesquisar"
+                  value={this.state.termosBusca}
+                  onChange={this.handleChange}
                 />
                 <InputGroup.Append>
                   <Button variant="outline-secondary">Button</Button>
