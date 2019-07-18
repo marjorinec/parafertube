@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import { InputGroup, FormControl, Button, Row, Col, Container } from 'react-bootstrap'
+import axios from "axios";
 
 class App extends React.Component{
 
@@ -13,10 +14,18 @@ class App extends React.Component{
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.buscaVideos = this.buscaVideos.bind(this);
   }
 
   handleChange(event) {
     this.setState({termosBusca: event.target.value})
+  }
+
+  async buscaVideos() {
+    let termosBusca = this.state.termosBusca
+    let url = `https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=${termosBusca}&maxresults=20&key=AIzaSyB2qPOWZw7J7GJ5rRjpL_tkfi4shZckQaE`
+    let dados = await axios.get(url)
+    this.setState({resultados: dados.data.items})
   }
 
   render() {
@@ -31,7 +40,7 @@ class App extends React.Component{
                   onChange={this.handleChange}
                 />
                 <InputGroup.Append>
-                  <Button variant="outline-secondary">Button</Button>
+                  <Button variant="outline-secondary" onClick={this.buscaVideos}>Button</Button>
                 </InputGroup.Append>
               </InputGroup>
             </Col>
