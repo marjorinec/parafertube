@@ -47,8 +47,8 @@ class App extends React.Component{
             <img className="thumbnail" src={value.snippet.thumbnails.default.url} href="{value.id.videoId}" />
           </Col>
           <Col className="info text-left">
-            <h6>{value.snippet.title}</h6>
-            <div>{value.snippet.description}</div>
+            <h6 dangerouslySetInnerHTML={{__html: value.snippet.title}}></h6>
+            <div dangerouslySetInnerHTML={{__html: value.snippet.description}}></div>
           </Col>
         </Row>
         )
