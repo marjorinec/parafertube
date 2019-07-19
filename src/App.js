@@ -35,6 +35,11 @@ class App extends React.Component{
     this.setState({resultados: dadosFiltrados})
   }
 
+  selecionaVideo(id) {
+    this.setState({idVideoAtual: id})
+
+  }
+
   imprimeResultados() {
     let videosEncontrados = this.state.resultados
     let videosImpressos = []
@@ -42,9 +47,9 @@ class App extends React.Component{
       (value) => {
         return (
 
-          <Row className="item">
+          <Row className="item" onClick={this.selecionaVideo.bind(this, value.id.videoId)}>
           <Col className="thumbnail" md="auto">
-            <img className="thumbnail" src={value.snippet.thumbnails.default.url} href="{value.id.videoId}" />
+            <img className="thumbnail" src={value.snippet.thumbnails.default.url} />
           </Col>
           <Col className="info text-left">
             <h6 dangerouslySetInnerHTML={{__html: value.snippet.title}}></h6>
@@ -85,7 +90,7 @@ class App extends React.Component{
 
             </Col>
             <Col className="video">
-              <img src="https://images.drivereasy.com/wp-content/uploads/2017/07/img_596dda8d77553.png"/>
+              <iframe width="560" height="315" src={`https://www.youtube.com/embed/${this.state.idVideoAtual}?&autoplay=1`} frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </Col>
           </Row>
       </Container>
