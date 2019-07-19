@@ -15,6 +15,7 @@ class App extends React.Component{
 
     this.handleChange = this.handleChange.bind(this);
     this.buscaVideos = this.buscaVideos.bind(this);
+    this.imprimeResultados = this.imprimeResultados.bind(this);
   }
 
   handleChange(event) {
@@ -32,6 +33,28 @@ class App extends React.Component{
       }
     )
     this.setState({resultados: dadosFiltrados})
+  }
+
+  imprimeResultados() {
+    let videosEncontrados = this.state.resultados
+    let videosImpressos = []
+    videosImpressos = videosEncontrados.map(
+      (value) => {
+        return (
+
+          <Row className="item">
+          <Col className="thumbnail" md="auto">
+            <img className="thumbnail" src={value.snippet.thumbnails.default.url} href="{value.id.videoId}" />
+          </Col>
+          <Col className="info text-left">
+            <h6>{value.snippet.title}</h6>
+            <div>{value.snippet.description}</div>
+          </Col>
+        </Row>
+        )
+      }
+    )
+    return videosImpressos
   }
 
   render() {
@@ -56,36 +79,10 @@ class App extends React.Component{
               <Row>
                 <Col className="text-left">
                   <h4 className="resultados">Resultados</h4>
+                  {this.imprimeResultados()} 
                 </Col>
               </Row>
-              <Row className="item">
-                <Col className="thumbnail" md="auto">
-                  <img className="thumbnail" src="https://i.ytimg.com/vi/KP1I78uRiDI/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLDs5q_8LKVL2FTMMHV7SolpQhj6Bg" />
-                </Col>
-                <Col className="info text-left">
-                  <h6>Titulo do video</h6>
-                  <div>hdjksah djksaghdsdgsahd gsahdgsaghdsa khdjksad</div>
-                </Col>
-              </Row>
-  
-              <Row className="item">
-                <Col className="thumbnail" md="auto">
-                  <img className="thumbnail" src="https://i.ytimg.com/vi/KP1I78uRiDI/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLDs5q_8LKVL2FTMMHV7SolpQhj6Bg" />
-                </Col>
-                <Col className="info text-left">
-                  <h6>Titulo do video</h6>
-                  <div>hdjksah djksaghdsdgsahd gsahdgsaghdsa khdjksad</div>
-                </Col>
-              </Row>
-              <Row className="item">
-                <Col className="thumbnail" md="auto">
-                  <img className="thumbnail" src="https://i.ytimg.com/vi/KP1I78uRiDI/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLDs5q_8LKVL2FTMMHV7SolpQhj6Bg" />
-                </Col>
-                <Col className="info text-left">
-                  <h6>Titulo do video</h6>
-                  <div>hdjksah djksaghdsdgsahd gsahdgsaghdsa khdjksad</div>
-                </Col>
-              </Row>
+
             </Col>
             <Col className="video">
               <img src="https://images.drivereasy.com/wp-content/uploads/2017/07/img_596dda8d77553.png"/>
