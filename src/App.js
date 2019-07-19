@@ -25,7 +25,13 @@ class App extends React.Component{
     let termosBusca = this.state.termosBusca
     let url = `https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=${termosBusca}&maxresults=20&key=AIzaSyB2qPOWZw7J7GJ5rRjpL_tkfi4shZckQaE`
     let dados = await axios.get(url)
-    this.setState({resultados: dados.data.items})
+
+    let dadosFiltrados = dados.data.items.filter(
+      (item) => {
+        return item.id.kind === "youtube#video"    
+      }
+    )
+    this.setState({resultados: dadosFiltrados})
   }
 
   render() {
@@ -49,7 +55,7 @@ class App extends React.Component{
             <Col className="sidebar">
               <Row>
                 <Col className="text-left">
-                  <h4 className="resultados">Resultados</h4> 
+                  <h4 className="resultados">Resultados</h4>
                 </Col>
               </Row>
               <Row className="item">
