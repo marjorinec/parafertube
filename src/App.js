@@ -49,7 +49,7 @@ class App extends React.Component{
       <Container className="App">
         <Busca acao={this.buscaVideos.bind(this)} texto={this.state.termosBusca} acaoAlteracao={this.handleChange}/>
           <Row className="content">
-            <Col className="sidebar">
+            <Col md="4" className="sidebar">
               <Row>
                 <Col className="text-left">
                   <h4 className="resultados">Resultados</h4>
