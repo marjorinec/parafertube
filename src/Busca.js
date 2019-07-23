@@ -9,7 +9,7 @@ class Busca extends React.Component{
 
   render() {
     return (
-      <Row>
+      <Row className="header">
         <Col>
           <Form onSubmit={this.props.acao}>
             <InputGroup className="search">
