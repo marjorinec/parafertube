@@ -10,6 +10,9 @@ class Busca extends React.Component{
   render() {
     return (
       <Row className="header">
+        <Col xs="12" md="6">
+          <h1>Parafertube</h1>
+        </Col>
         <Col>
           <Form onSubmit={this.props.acao}>
             <InputGroup className="search">
