@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { InputGroup, FormControl, Button, Row, Col, Container } from 'react-bootstrap'
+import { InputGroup, FormControl, Button, Row, Col, Container, Form } from 'react-bootstrap'
 import axios from "axios";
 
 class App extends React.Component{
@@ -22,7 +22,8 @@ class App extends React.Component{
     this.setState({termosBusca: event.target.value})
   }
 
-  async buscaVideos() {
+  async buscaVideos(event) {
+    event.preventDefault();
     let termosBusca = this.state.termosBusca
     let url = `https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=${termosBusca}&maxresults=20&key=AIzaSyB2qPOWZw7J7GJ5rRjpL_tkfi4shZckQaE`
     let dados = await axios.get(url)
@@ -67,16 +68,18 @@ class App extends React.Component{
       <Container className="App">
           <Row>
             <Col>
-              <InputGroup className="search">
-                <FormControl
-                  placeholder="Pesquisar"
-                  value={this.state.termosBusca}
-                  onChange={this.handleChange}
-                />
-                <InputGroup.Append>
-                  <Button variant="outline-secondary" onClick={this.buscaVideos}>Button</Button>
-                </InputGroup.Append>
-              </InputGroup>
+              <Form onSubmit={this.buscaVideos}>
+                <InputGroup className="search">
+                  <FormControl
+                    placeholder="Pesquisar"
+                    value={this.state.termosBusca}
+                    onChange={this.handleChange}
+                  />
+                  <InputGroup.Append>
+                    <Button variant="outline-secondary" type="submit">Button</Button>
+                  </InputGroup.Append>
+                </InputGroup>
+              </Form>
             </Col>
           </Row>
           <Row className="content">
