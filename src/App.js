@@ -1,7 +1,9 @@
 import React from 'react';
-import './App.css';
-import { InputGroup, FormControl, Button, Row, Col, Container, Form } from 'react-bootstrap'
-import axios from "axios";
+import './App.css'
+import { Row, Col, Container } from 'react-bootstrap'
+import axios from "axios"
+import Busca from "./Busca.js"
+import ListaResultados from "./ListaResultados.js"
 
 class App extends React.Component{
 
@@ -13,9 +15,9 @@ class App extends React.Component{
       idVideoAtual: ""
     }
 
+    this.selecionaVideo = this.selecionaVideo.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.buscaVideos = this.buscaVideos.bind(this);
-    this.imprimeResultados = this.imprimeResultados.bind(this);
   }
 
   handleChange(event) {
@@ -41,53 +43,16 @@ class App extends React.Component{
 
   }
 
-  imprimeResultados() {
-    let videosEncontrados = this.state.resultados
-    let videosImpressos = []
-    videosImpressos = videosEncontrados.map(
-      (value) => {
-        return (
-
-          <Row className="item" onClick={this.selecionaVideo.bind(this, value.id.videoId)}>
-          <Col className="thumbnail" md="auto">
-            <img className="thumbnail" src={value.snippet.thumbnails.default.url} />
-          </Col>
-          <Col className="info text-left">
-            <h6 dangerouslySetInnerHTML={{__html: value.snippet.title}}></h6>
-            <div dangerouslySetInnerHTML={{__html: value.snippet.description}}></div>
-          </Col>
-        </Row>
-        )
-      }
-    )
-    return videosImpressos
-  }
-
   render() {
     return (
       <Container className="App">
-          <Row>
-            <Col>
-              <Form onSubmit={this.buscaVideos}>
-                <InputGroup className="search">
-                  <FormControl
-                    placeholder="Pesquisar"
-                    value={this.state.termosBusca}
-                    onChange={this.handleChange}
-                  />
-                  <InputGroup.Append>
-                    <Button variant="outline-secondary" type="submit">Button</Button>
-                  </InputGroup.Append>
-                </InputGroup>
-              </Form>
-            </Col>
-          </Row>
+        <Busca acao={this.buscaVideos.bind(this)} />
           <Row className="content">
             <Col className="sidebar">
               <Row>
                 <Col className="text-left">
                   <h4 className="resultados">Resultados</h4>
-                  {this.imprimeResultados()} 
+                    <ListaResultados resultados={this.state.resultados} acao={this.selecionaVideo}/>
                 </Col>
               </Row>
 
