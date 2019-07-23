@@ -4,6 +4,7 @@ import { Row, Col, Container } from 'react-bootstrap'
 import axios from "axios"
 import Busca from "./Busca.js"
 import ListaResultados from "./ListaResultados.js"
+import Player from "./Player.js"
 
 class App extends React.Component{
 
@@ -57,9 +58,7 @@ class App extends React.Component{
               </Row>
 
             </Col>
-            <Col className="video">
-              <iframe width="560" height="315" src={`https://www.youtube.com/embed/${this.state.idVideoAtual}?&autoplay=1`} frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </Col>
+            <Player id={this.state.idVideoAtual}/>
           </Row>
       </Container>
     );
