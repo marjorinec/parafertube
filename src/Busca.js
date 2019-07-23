@@ -10,7 +10,7 @@ class Busca extends React.Component{
   render() {
     return (
       <Row className="header">
-        <Col xs="12" md="6">
+        <Col xs="12" md="4">
           <h1>Parafertube</h1>
         </Col>
         <Col>
