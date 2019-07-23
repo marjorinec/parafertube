@@ -1,5 +1,6 @@
 import React from "react"
 import { Row, Col, Alert } from 'react-bootstrap'
+import "./ListaResultados.css"
 
 class ListaResultados extends React.Component {
   constructor(props) {
