@@ -13,7 +13,8 @@ class App extends React.Component{
     this.state = {
       termosBusca: "",
       resultados: null,
-      idVideoAtual: ""
+      idVideoAtual: "",
+      pronto: false
     }
 
     this.selecionaVideo = this.selecionaVideo.bind(this);
@@ -27,6 +28,7 @@ class App extends React.Component{
 
   async buscaVideos(event) {
     event.preventDefault();
+    this.setState({pronto: false})
     let termosBusca = this.state.termosBusca
     let url = `https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=${termosBusca}&maxresults=20&key=AIzaSyB2qPOWZw7J7GJ5rRjpL_tkfi4shZckQaE`
     let dados = await axios.get(url)
@@ -36,7 +38,7 @@ class App extends React.Component{
         return item.id.kind === "youtube#video"    
       }
     )
-    this.setState({resultados: dadosFiltrados})
+    this.setState({resultados: dadosFiltrados, pronto: true})
   }
 
   selecionaVideo(id) {
@@ -52,7 +54,7 @@ class App extends React.Component{
             <Col md="4" className="sidebar">
               <Row>
                 <Col className="text-left">
-                    <ListaResultados resultados={this.state.resultados} acao={this.selecionaVideo}/>
+                    <ListaResultados pronto={this.state.pronto} resultados={this.state.resultados} acao={this.selecionaVideo}/>
                 </Col>
               </Row>
 

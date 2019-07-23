@@ -1,5 +1,5 @@
 import React from "react"
-import { Row, Col, Alert } from 'react-bootstrap'
+import { Row, Col, Alert, Spinner } from 'react-bootstrap'
 import "./ListaResultados.css"
 
 class ListaResultados extends React.Component {
@@ -24,6 +24,12 @@ class ListaResultados extends React.Component {
         <Alert variant="info">
           Realize uma busca para ver aqui os resultados.
         </Alert>
+      )
+    }
+
+    if (!this.props.pronto) {
+      return (
+        <Spinner animation="border" variant="dark"/>
       )
     }
 
