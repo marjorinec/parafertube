@@ -50,7 +50,6 @@ class App extends React.Component{
     return (
       <div className="App">
         <Busca acao={this.buscaVideos.bind(this)} texto={this.state.termosBusca} acaoAlteracao={this.handleChange}/>
-        <Container>
           <Row className="content">
             <Col md="4" className="sidebar">
               <Row>
@@ -62,7 +61,6 @@ class App extends React.Component{
             </Col>
             <Player id={this.state.idVideoAtual}/>
           </Row>
-        </Container>
       </div>
     );
   }

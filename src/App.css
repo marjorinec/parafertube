@@ -1,11 +1,16 @@
+body, .content {
+  background-color: #eceff0;
+}
+
 @media (min-width: 1200px){
   .container {
     max-width: 100% !important;
   }
-}
 
-.content {
-  margin-top: 1rem;
+  .header .branding {
+    padding-left: 4rem;
+  }
+
 }
 
 .header {
@@ -16,6 +21,38 @@
 .search {
   max-width: 400px;
 }
+
+.search > input {
+  background-color: #eceff0;
+}
+
+.sidebar > .row > .col {
+  padding: 1rem 30px 1rem 30px;
+}
+
+@media(min-width: 768px) {
+  html, body, #root, .App, .content {
+    height: 100%;
+    overflow: hidden;
+    background-color: #eceff0;
+  }
+
+  .sidebar {
+    position: relative;
+  }
+  
+  .sidebar > .row {
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    overflow-x: scroll;
+  }
+  
+  .sidebar > .row > .col {
+    padding: 1rem 15px 5rem 45px;
+  }
+}
+
 
 .thumbnail {
   float: left;
