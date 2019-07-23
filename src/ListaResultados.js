@@ -47,9 +47,9 @@ class ListaResultados extends React.Component {
         const titulo = this.limitaTexto(value.snippet.title)
         const descricao = this.limitaTexto(value.snippet.description, 50)
         return (
-          <Row className="item" onClick={this.props.acao.bind(this, value.id.videoId)}>
+          <Row className="item" onClick={this.props.acao.bind(this, value.id.videoId)} key={value.id.videoId}>
             <Col className="thumbnail" md="auto">
-              <img className="thumbnail" src={value.snippet.thumbnails.default.url} />
+              <img className="thumbnail" src={value.snippet.thumbnails.default.url} alt={titulo}/>
             </Col>
             <Col className="info text-left">
               <h5 dangerouslySetInnerHTML={{__html: titulo}}></h5>

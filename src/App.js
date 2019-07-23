@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css'
-import { Row, Col, Container } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import axios from "axios"
 import Busca from "./Busca.js"
 import ListaResultados from "./ListaResultados.js"
