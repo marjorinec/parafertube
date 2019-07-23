@@ -24,7 +24,7 @@ class Busca extends React.Component{
                   onChange={this.props.acaoAlteracao}
                 />
                 <InputGroup.Append>
-                  <Button variant="outline-secondary" type="submit">Buscar</Button>
+                  <Button variant="secondary" type="submit">Buscar</Button>
                 </InputGroup.Append>
               </InputGroup>
             </Form>
