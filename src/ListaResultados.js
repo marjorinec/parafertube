@@ -8,6 +8,14 @@ class ListaResultados extends React.Component {
     this.state = {}
   }
 
+  limitaTexto(texto, tamanho=30) {
+    if (texto.length > tamanho-3) {
+      texto = texto.substr(0, tamanho-3)
+      texto += '...'
+    }
+    return texto
+  }
+
   render() {
     let videosEncontrados = this.props.resultados
     
@@ -30,14 +38,16 @@ class ListaResultados extends React.Component {
     let videosImpressos = []
     videosImpressos = videosEncontrados.map(
       (value) => {
+        const titulo = this.limitaTexto(value.snippet.title)
+        const descricao = this.limitaTexto(value.snippet.description, 50)
         return (
           <Row className="item" onClick={this.props.acao.bind(this, value.id.videoId)}>
             <Col className="thumbnail" md="auto">
               <img className="thumbnail" src={value.snippet.thumbnails.default.url} />
             </Col>
             <Col className="info text-left">
-              <h6 dangerouslySetInnerHTML={{__html: value.snippet.title}}></h6>
-              <div dangerouslySetInnerHTML={{__html: value.snippet.description}}></div>
+              <h5 dangerouslySetInnerHTML={{__html: titulo}}></h5>
+              <div dangerouslySetInnerHTML={{__html: descricao}}></div>
             </Col>
           </Row>
         )
