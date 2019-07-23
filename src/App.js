@@ -12,7 +12,7 @@ class App extends React.Component{
     super(props)
     this.state = {
       termosBusca: "",
-      resultados: [],
+      resultados: null,
       idVideoAtual: ""
     }
 

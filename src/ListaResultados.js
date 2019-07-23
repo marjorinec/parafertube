@@ -1,5 +1,5 @@
 import React from "react"
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Alert } from 'react-bootstrap'
 
 class ListaResultados extends React.Component {
   constructor(props) {
@@ -9,6 +9,13 @@ class ListaResultados extends React.Component {
 
   render() {
     let videosEncontrados = this.props.resultados
+    if (videosEncontrados === null) {
+      return (
+        <Alert variant="info">
+          Realize uma busca para ver aqui os resultados.
+        </Alert>
+      )
+    }
     let videosImpressos = []
     videosImpressos = videosEncontrados.map(
       (value) => {
