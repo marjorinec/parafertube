@@ -14,12 +14,12 @@ class Busca extends React.Component{
           <Form onSubmit={this.props.acao}>
             <InputGroup className="search">
               <FormControl
-                placeholder="Pesquisar"
+                placeholder="digite os termos de busca"
                 value={this.props.texto}
                 onChange={this.props.acaoAlteracao}
               />
               <InputGroup.Append>
-                <Button variant="outline-secondary" type="submit">Button</Button>
+                <Button variant="outline-secondary" type="submit">Buscar</Button>
               </InputGroup.Append>
             </InputGroup>
           </Form>
