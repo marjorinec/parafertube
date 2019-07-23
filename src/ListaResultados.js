@@ -20,20 +20,24 @@ class ListaResultados extends React.Component {
     videosImpressos = videosEncontrados.map(
       (value) => {
         return (
-
           <Row className="item" onClick={this.props.acao.bind(this, value.id.videoId)}>
-          <Col className="thumbnail" md="auto">
-            <img className="thumbnail" src={value.snippet.thumbnails.default.url} />
-          </Col>
-          <Col className="info text-left">
-            <h6 dangerouslySetInnerHTML={{__html: value.snippet.title}}></h6>
-            <div dangerouslySetInnerHTML={{__html: value.snippet.description}}></div>
-          </Col>
-        </Row>
+            <Col className="thumbnail" md="auto">
+              <img className="thumbnail" src={value.snippet.thumbnails.default.url} />
+            </Col>
+            <Col className="info text-left">
+              <h6 dangerouslySetInnerHTML={{__html: value.snippet.title}}></h6>
+              <div dangerouslySetInnerHTML={{__html: value.snippet.description}}></div>
+            </Col>
+          </Row>
         )
       }
     )
-    return videosImpressos
+    return (
+      <div>
+        <h4 className="resultados">Resultados</h4>
+        {videosImpressos}
+      </div>
+    )
   }
 }
 

@@ -52,7 +52,6 @@ class App extends React.Component{
             <Col md="4" className="sidebar">
               <Row>
                 <Col className="text-left">
-                  <h4 className="resultados">Resultados</h4>
                     <ListaResultados resultados={this.state.resultados} acao={this.selecionaVideo}/>
                 </Col>
               </Row>
