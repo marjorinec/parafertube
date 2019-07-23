@@ -9,6 +9,7 @@ class ListaResultados extends React.Component {
 
   render() {
     let videosEncontrados = this.props.resultados
+    
     if (videosEncontrados === null) {
       return (
         <Alert variant="info">
@@ -16,6 +17,15 @@ class ListaResultados extends React.Component {
         </Alert>
       )
     }
+
+    if (videosEncontrados.length === 0) {
+      return (
+        <Alert variant="warning">
+          Nenhum resultado encontrado.
+        </Alert>
+      )
+    }
+
     let videosImpressos = []
     videosImpressos = videosEncontrados.map(
       (value) => {
