@@ -47,7 +47,7 @@ class App extends React.Component{
   render() {
     return (
       <Container className="App">
-        <Busca acao={this.buscaVideos.bind(this)} />
+        <Busca acao={this.buscaVideos.bind(this)} texto={this.state.termosBusca} acaoAlteracao={this.handleChange}/>
           <Row className="content">
             <Col className="sidebar">
               <Row>

@@ -2,7 +2,6 @@ import React from 'react';
 import { InputGroup, FormControl, Button, Row, Col, Form } from 'react-bootstrap'
 
 class Busca extends React.Component{
-
   constructor(props) {
     super(props)
     this.state = {}
@@ -16,8 +15,8 @@ class Busca extends React.Component{
             <InputGroup className="search">
               <FormControl
                 placeholder="Pesquisar"
-                value={this.state.termosBusca}
-                onChange={this.handleChange}
+                value={this.props.texto}
+                onChange={this.props.acaoAlteracao}
               />
               <InputGroup.Append>
                 <Button variant="outline-secondary" type="submit">Button</Button>
